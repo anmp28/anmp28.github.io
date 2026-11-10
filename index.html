@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        canvas.emscripten {
+            border: 0 none;
+            background-color: black;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+
+    <script type="text/javascript">
+        var Module = {
+            preRun: [],
+            postRun: [],
+            print: function(text) { console.log(text); },
+            printErr: function(text) { console.error(text); },
+            canvas: (function() {
+                var canvas = document.getElementById('canvas');
+                return canvas;
+            })()
+        };
+    </script>
+    <script async type="text/javascript" src="supertux.js"></script>
+</body>
+</html>
